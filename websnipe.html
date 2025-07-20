@@ -1,0 +1,29 @@
+<html>
+<head>
+ <title>PsyopC2</title>
+ <style>
+  body{background:#000;color:#0f0;font-family:'Inconsolata','Courier New',monospace;margin:0;padding:10px}
+  .t{background:#000;border:1px solid #333;max-width:900px;margin:0 auto;padding:15px;min-height:100vh}
+  .p{color:#0f0}
+  input{background:none;border:none;color:#0f0;font-family:'Inconsolata','Courier New',monospace;width:80%;outline:none}
+  button{background:none;border:none;color:#0f0;cursor:pointer;font-family:'Inconsolata','Courier New',monospace;padding:0 10px}
+  button:hover{color:#fff}
+  #o{white-space:pre-wrap;word-break:break-all;margin-top:10px}
+  @font-face{font-family:'Inconsolata';src:url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap')}
+ </style>
+</head>
+<body>
+ <div class="t">
+  <div class="p">$ psyopc2 --client</div>
+  <input id="cid" placeholder="client_id">
+  <button onclick="g()">get</button>
+  <button onclick="s()">send</button>
+  <input id="cmd" placeholder="cmd">
+  <div id="o"></div>
+ </div>
+ <script>
+async function g(){let i=document.getElementById('cid').value,o=document.getElementById('o');o.innerHTML='[*] pullin...';try{let r=await fetch('http://localhost:8000?id='+i);if(r.status==200){let d=await r.json();o.innerHTML=JSON.stringify(d,null,2)}else o.innerHTML='[!] no client'}catch(e){o.innerHTML='[!] err: '+e}}
+async function s(){let i=document.getElementById('cid').value,c=document.getElementById('cmd').value,o=document.getElementById('o');o.innerHTML='[*] pushin...';try{let r=await fetch('http://localhost:8000?id='+i,{method:'PUT',body:btoa(c)});o.innerHTML=r.status==200?'[*] sent':'[!] fail'}catch(e){o.innerHTML='[!] err: '+e}}
+ </script>
+</body>
+</html>
