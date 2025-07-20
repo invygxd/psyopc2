@@ -1,5 +1,5 @@
-from http.server import HTTPServer,BaseHTTPRequestHandler
-import json,base64,urllib.parse as u
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import json, base64, urllib.parse as u
 p=8000
 c={}
 class H(BaseHTTPRequestHandler):
